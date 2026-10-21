@@ -1,0 +1,4 @@
+# Construction du site (GitHub Actions et poste local). mkdocs : BSD-2-Clause ; mkdocs-material : MIT.
+# Rester sur MkDocs 1.x : la 2.0 casse thèmes et plugins, Material for MkDocs ne la prend pas en charge.
+mkdocs==1.6.1
+mkdocs-material==9.7.7

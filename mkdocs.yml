@@ -1,0 +1,40 @@
+site_name: Documentation TIE
+site_description: Moteur de recherche documentaire et assistant sourcé, hébergé chez vous
+site_url: https://jquivogn.github.io/tie-docs/
+repo_url: https://github.com/jquivogn/tie-docs
+repo_name: tie-docs
+copyright: Documentation sous licence CC BY 4.0. Logiciel TIE sous licence propriétaire.
+
+theme:
+  name: material
+  language: fr
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - search.highlight
+  palette:
+    - scheme: default
+      toggle: { icon: material/brightness-7, name: Mode sombre }
+    - scheme: slate
+      toggle: { icon: material/brightness-4, name: Mode clair }
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc: { permalink: true }
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+
+nav:
+  - Accueil: index.md
+  - Présentation: presentation.md
+  - Exploitation:
+      - Déploiement: exploitation/deploiement.md
+      - Supervision: exploitation/supervision.md
+      - Mises à jour: exploitation/mises-a-jour.md
+  - Intégration:
+      - Intégrer le moteur: integration/moteur.md
+  - Licences: licences.md
