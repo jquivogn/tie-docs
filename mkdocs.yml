@@ -38,3 +38,6 @@ nav:
   - Intégration:
       - Intégrer le moteur: integration/moteur.md
   - Licences: licences.md
+
+extra:
+  engine_version: "3.34.0"
