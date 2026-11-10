@@ -1,14 +1,14 @@
 # Intégrer le moteur
 
-!!! warning "API pré-v1"
-    Cette page décrit l'API du moteur en version 3.34. L'API sera stabilisée en **v1**, avec des routes versionnées (`/v1/...`) et des codes d'erreur stables : ce changement sera annoncé à l'avance. La référence complète (schéma OpenAPI, client de référence) sera publiée avec la v1. Pour intégrer le moteur avant, contactez-nous.
+!!! warning "API avant la 1.0"
+    Cette page décrit l'API du moteur en version 0.34. L'API sera stabilisée en version **1.0**, avec des routes versionnées (`/v1/...`) et des codes d'erreur stables : ce changement sera annoncé à l'avance. La référence complète (schéma OpenAPI, client de référence) sera publiée avec la 1.0. Pour intégrer le moteur avant, contactez-nous.
 
 ## Principes
 
 - **HTTP et JSON**, sans authentification : le moteur doit rester sur un réseau privé, derrière votre application, qui contrôle les droits avant chaque appel.
 - **Vous fournissez les identifiants.** Chaque document a un `doc_id` choisi par vous, unique au sein d'un espace (`space_id`). Le même `doc_id` dans deux espaces désigne deux documents distincts.
 - **Le moteur ne garde aucun état d'application** : ni utilisateurs, ni conversations, ni fichiers d'origine. Votre application conserve les fichiers, pour pouvoir réindexer.
-- **Versions sémantiques** : une version mineure n'ajoute que des champs ou routes facultatifs. Ignorez les champs que vous ne connaissez pas.
+- **Versions sémantiques** : d'ici la 1.0, une nouvelle version (0.N) n'ajoute que des champs ou routes facultatifs. Ignorez les champs que vous ne connaissez pas.
 
 ## Routes
 
@@ -36,7 +36,7 @@ L'indexation est synchrone : la réponse arrive quand le document est interrogea
 {"doc_type": "report", "chunk_count": 12, "replaced": false, "page_count": 8,
  "doc_date": "2026-06-12", "doc_date_source": "extracted", "doc_date_confidence": 0.9,
  "doc_genre": "compte rendu de réunion",
- "engine_version": "3.34.0", "timings_ms": {"extract": 120, "embed": 1900}}
+ "engine_version": "0.34.0", "timings_ms": {"extract": 120, "embed": 1900}}
 ```
 
 `doc_genre` est le genre du document, lu sur son début et son nom de fichier, dans la langue du texte (`null` si aucun n'a été reconnu). C'est un texte libre, à afficher et non à comparer à une liste fixe.

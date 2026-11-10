@@ -19,4 +19,4 @@ TIE se compose de deux briques :
 | Intégrateur | [Intégrer le moteur](integration/moteur.md) |
 
 !!! note "Version"
-    Cette documentation décrit le moteur en version **3.34**. L'API du moteur sera stabilisée en **v1** : d'ici là, la page d'intégration en donne les principes, et la référence complète sera publiée avec la v1.
+    Cette documentation décrit le moteur en version **0.34**. L'API du moteur sera stabilisée en version **1.0** : d'ici là, la page d'intégration en donne les principes, et la référence complète sera publiée avec la 1.0.
