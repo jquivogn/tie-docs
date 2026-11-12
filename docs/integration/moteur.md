@@ -8,7 +8,7 @@
 - **HTTP et JSON**, sans authentification : le moteur doit rester sur un réseau privé, derrière votre application, qui contrôle les droits avant chaque appel.
 - **Vous fournissez les identifiants.** Chaque document a un `doc_id` choisi par vous, unique au sein d'un espace (`space_id`). Le même `doc_id` dans deux espaces désigne deux documents distincts.
 - **Le moteur ne garde aucun état d'application** : ni utilisateurs, ni conversations, ni fichiers d'origine. Votre application conserve les fichiers, pour pouvoir réindexer.
-- **Versions sémantiques** : d'ici la 1.0, une nouvelle version (0.N) n'ajoute que des champs ou routes facultatifs. Ignorez les champs que vous ne connaissez pas.
+- **Versions sémantiques** : le numéro ne change qu'à la publication d'une version, et son niveau (correctif, mineur, majeur) indique la compatibilité : voir [Compatibilité de l'API](../exploitation/mises-a-jour.md#compatibilite-de-lapi). Ignorez les champs que vous ne connaissez pas.
 
 ## Routes
 
