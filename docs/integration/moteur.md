@@ -1,7 +1,7 @@
 # Intégrer le moteur
 
 !!! warning "API avant la 1.0"
-    Cette page décrit l'API du moteur en version 0.34. L'API sera stabilisée en version **1.0**, avec des routes versionnées (`/v1/...`) et des codes d'erreur stables : ce changement sera annoncé à l'avance. La référence complète (schéma OpenAPI, client de référence) sera publiée avec la 1.0. Pour intégrer le moteur avant, contactez-nous.
+    Cette page décrit l'API du moteur en version 0.35. L'API sera stabilisée en version **1.0**, avec des routes versionnées (`/v1/...`) et des codes d'erreur stables : ce changement sera annoncé à l'avance. La référence complète (schéma OpenAPI, client de référence) sera publiée avec la 1.0. Pour intégrer le moteur avant, contactez-nous.
 
 ## Principes
 
@@ -36,7 +36,7 @@ L'indexation est synchrone : la réponse arrive quand le document est interrogea
 {"doc_type": "report", "chunk_count": 12, "replaced": false, "page_count": 8,
  "doc_date": "2026-06-12", "doc_date_source": "extracted", "doc_date_confidence": 0.9,
  "doc_genre": "compte rendu de réunion",
- "engine_version": "0.34.0", "timings_ms": {"extract": 120, "embed": 1900}}
+ "engine_version": "0.35.0", "timings_ms": {"extract": 120, "embed": 1900}}
 ```
 
 `doc_genre` est le genre du document, lu sur son début et son nom de fichier, dans la langue du texte (`null` si aucun n'a été reconnu). C'est un texte libre, à afficher et non à comparer à une liste fixe.
