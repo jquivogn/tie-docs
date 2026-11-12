@@ -27,7 +27,7 @@ Si la réponse n'est dans aucun document, TIE le dit, sans inventer.
 
 ## Comment ça marche
 
-1. **Vous déposez vos documents** dans des dossiers. TIE les découpe en extraits, calcule leur sens (embeddings), en extrait les thèmes et leur date.
+1. **Vous déposez vos documents** dans des dossiers. TIE les découpe en extraits, calcule leur sens (embeddings), reconnaît le genre de chaque document (compte rendu, contrat, mail…), en extrait les thèmes, les articles cités et la date.
 2. **Vous posez une question** sur un ou plusieurs dossiers. TIE retrouve les extraits les plus pertinents et les fournit au modèle de langage.
 3. **Le modèle rédige la réponse** à partir de ces seuls extraits, en les citant. TIE retire tout renvoi qui ne correspond pas à un extrait fourni, avant de vous montrer la réponse.
 
@@ -39,7 +39,9 @@ Si la réponse n'est dans aucun document, TIE le dit, sans inventer.
 
 - la proximité de sens (embeddings), qui trouve un passage formulé autrement que la question ;
 - la recherche plein texte, qui trouve un nom, un sigle ou un numéro exact ;
-- un graphe de thèmes, extraits de chaque passage à l'indexation, qui relie les documents qui traitent du même sujet.
+- un graphe de thèmes, extraits de chaque passage à l'indexation, qui relie les documents qui traitent du même sujet. Les thèmes proches sont regroupés en grands sujets, ce qui aide les questions transverses (« fais la synthèse des incidents de l'année »).
+
+**Suivre les renvois entre articles.** Quand un passage retenu renvoie à un autre article (« dans le délai fixé à l'article 7 »), TIE ajoute l'article cité aux sources, qu'il soit dans le même document ou, si la référence est sans ambiguïté (« article L. 221-18 »), dans un autre document du même dossier. La réponse peut ainsi s'appuyer sur le texte auquel le passage renvoie.
 
 **Suivre une conversation.** Une question de suivi (« Et en septembre ? ») est reformulée en question autonome avant la recherche. Le moteur ne conserve aucune conversation : c'est l'application qui la garde.
 
@@ -62,15 +64,16 @@ Les PDF numérisés sans couche texte, les anciens formats binaires (`.doc`, `.p
 
 ## Cloisonnement
 
-Les documents sont rangés dans des espaces (les dossiers de l'application). Chaque recherche porte sur les espaces demandés et sur eux seuls, y compris les passages voisins ajoutés pour le contexte. Les droits d'accès des utilisateurs sont gérés par le wrapper, avant tout appel au moteur.
+Les documents sont rangés dans des espaces (les dossiers de l'application). Chaque recherche porte sur les espaces demandés et sur eux seuls, y compris les passages voisins ajoutés pour le contexte et les articles cités. À l'indexation aussi, un document n'est rapproché que des thèmes de son propre espace. Les droits d'accès des utilisateurs sont gérés par le wrapper, avant tout appel au moteur.
 
 ## Où vont les données
 
 | Donnée | Où |
 |---|---|
-| Documents, extraits, index | Bases de données installées chez vous (PostgreSQL, Neo4j) |
+| Documents, extraits, index | Bases de données installées chez vous (MySQL ou MariaDB, Neo4j) |
 | Calcul des embeddings | Chez vous par défaut : modèle embarqué dans l'image, ou service dédié (modèle français Solon). Un service en ligne (Mistral) est possible si vous le configurez |
 | Questions, extraits retenus pour la réponse | Envoyés au modèle de langage configuré : Mistral, hébergé en Europe, ou un modèle installé chez vous |
+| Extraits lus à l'indexation (genre, thèmes, date) | Envoyés au modèle de langage configuré pour l'indexation : par défaut le même que pour les réponses |
 
 Les journaux du moteur ne contiennent jamais le texte d'une question ni le contenu d'un document : seulement des identifiants, des volumes et des durées.
 
